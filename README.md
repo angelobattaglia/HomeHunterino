@@ -10,6 +10,13 @@ cd .env\scripts
 .\Activate.ps1
 ```
 
+On linux, through bash or zsh
+```shell
+python3 -m venv .env
+cd .env/bin
+source activate
+```
+
 Then install all of the libraries required
 ```ps1
 pip install -r requirements.txt
