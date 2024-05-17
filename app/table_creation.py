@@ -16,22 +16,22 @@ def create_table_utenti():
     conn.commit()
     conn.close()
 
-def create_table_raccolte():
-    conn = sqlite3.connect('data.db')
-    cursor = conn.cursor()
-    cursor.execute('''
-        CREATE TABLE IF NOT EXISTS "" (
-        );
-    ''')
-    conn.commit()
-    conn.close()
+# def create_table_():
+    # conn = sqlite3.connect('data.db')
+    # cursor = conn.cursor()
+    # cursor.execute('''
+        # CREATE TABLE IF NOT EXISTS "" (
+        # );
+    # ''')
+    # conn.commit()
+    # conn.close()
 
-def create_table_donazioni():
-    conn = sqlite3.connect('data.db')
-    cursor = conn.cursor()
-    cursor.execute('''
-        CREATE TABLE IF NOT EXISTS "" (
-        );
-    ''')
-    conn.commit()
-    conn.close()
+# def create_table_donazioni():
+    # conn = sqlite3.connect('data.db')
+    # cursor = conn.cursor()
+    # cursor.execute('''
+        # CREATE TABLE IF NOT EXISTS "" (
+        # );
+    # ''')
+    # conn.commit()
+    # conn.close()
