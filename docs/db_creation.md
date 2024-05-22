@@ -5,15 +5,42 @@ login. Il login/registrazione richiede un campo univoco che sarà utilizzato per
 nel sito (per esempio, la mail)
 
 ```sql
-CREATE TABLE "users" (
+CREATE TABLE IF NOT EXISTS "utenti" (
     "id" INTEGER NOT NULL,
-    "nickname" TEXT NOT NULL,
+    "email" TEXT NOT NULL UNIQUE,
+    "user_type" TEXT NON NULL,
     "password" TEXT NOT NULL,
     PRIMARY KEY("id")
-)
+);
 ```
 
 Here's how to delete a table
 ```sql
 DROP TABLE "users"
+```
+
+```sql
+CREATE TABLE IF NOT EXISTS "adverts" (
+	"id"	INTEGER NOT NULL,
+	"title"	TEXT NOT NULL,
+	"address"	TEXT NOT NULL,
+	"type"	TEXT NOT NULL,
+	"rooms"	INTEGER NOT NULL,
+	"description"	TEXT NOT NULL,
+	"price"	INTEGER NOT NULL,
+	"furnished"	INTEGER NOT NULL,
+	"id_landlord"	INTEGER NOT NULL,
+	"publicly_available"	INTEGER NOT NULL,
+	PRIMARY KEY("id")
+);
+```
+
+```sql
+CREATE TABLE IF NOT EXISTS "photos" (
+	"id" INTEGER NOT NULL,
+	"advert_id"	INTEGER NOT NULL,
+	"file_name"	TEXT,
+	FOREIGN KEY("advert_id") REFERENCES "annunci"("id"),
+	PRIMARY KEY("id")
+);
 ```

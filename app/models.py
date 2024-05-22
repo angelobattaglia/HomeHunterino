@@ -19,8 +19,8 @@ user = User(id=1, nickname='john_doe', password='hashed_password_here',
 https://flask-user.readthedocs.io/en/latest/authorization.html
 """
 class User(UserMixin):
-    def __init__(self, id, email, usr_type, password):
+    def __init__(self, id, email, user_type, password):
         self.id = id
         self.email = email
-        self.usr_type = usr_type
+        self.user_type = user_type
         self.password = password

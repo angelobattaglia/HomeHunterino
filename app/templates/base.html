@@ -32,23 +32,27 @@
                 <ul class="nav justify-content-center">
                     {% if current_user.is_authenticated %}
                         <li class="nav-item">
-                            <span class="nav-link disabled">Logged in as {{ current_user.nickname }}</span>
+                            <span class="nav-link disabled">Logged in as {{ current_user.email }}</span>
                         </li>
+                        {% if current_user.user_type == 'tenant' %}
+                            <li class="nav-item">
+                                <span class="nav-link disabled">Role: Tenant</span>
+                            </li>
+                        {% elif current_user.user_type == 'landlord' %}
+                            <li class="nav-item">
+                                <span class="nav-link disabled">Role: Landlord</span>
+                            </li>
+                        {% else %}
+                            <li class="nav-item">
+                                <span class="nav-link disabled">Role: Unknown</span>
+                            </li>
+                        {% endif %}
                     {% else %}
                         <li class="nav-item">
                             <span class="nav-link disabled">Not logged in</span>
                         </li>
                     {% endif %}
 
-                    {% if current_user.has_role('affittuario')  %}
-                        <li class="nav-item">
-                            <span class="nav-link disabled">Logged in as {{ current_user.roles[0] }}</span>
-                        </li>
-                    {% else %}
-                        <li class="nav-item">
-                            <span class="nav-link disabled">Not logged in</span>
-                        </li>
-                    {% endif %}
 
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('home') }}">Home</a>

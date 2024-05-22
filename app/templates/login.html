@@ -11,10 +11,11 @@
 
             <form action="/login" method="POST" enctype="multipart/form-data">
                 <div class="mb-3">
-                    <!-- The following is the label Nickname -->
-                    <label for="nicknameInput" class="form-label">Nickname</label>
-                    <!-- The following is the input that goes under the name "nickname" -->
-                    <input type="text" class="form-control" name="nickname" id="nicknameInput">
+                    <!-- The following is the label Email -->
+                    <label for="emailInput" class="form-label">Email</label>
+                    <!-- The following is the input that goes under the name "email" -->
+                    <input type="text" class="form-control" name="email" id="emailInput">
+                    <div id="user_typeHelp" class="form-text">We will never share your email with third parties</div>
                 </div>
 
                 <div class="mb-3">
@@ -22,10 +23,10 @@
                     <label for="passwordInput" class="form-label">Password</label>
                     <!-- The following is the input that goes under the name "password" -->
                     <input type="password" class="form-control" name="password" id="passwordInput">
-                    <div id="passwordHelp" class="form-text">Non condivideremo mai la tua password con nessun altro.</div>
+                    <div id="passwordHelp" class="form-text">Your password will be safe in our hands</div>
                 </div>
-                <button type="submit" class="btn btn-primary mt-3">Accedi</button>
-                <small>Non hai ancora un account? <a href="/signup">Registrati</a></small>
+                <button type="submit" class="btn btn-primary mt-3">Log in</button>
+                <small>Don't you have an account? <a href="/signup">Sign up</a></small>
             </form>
         </div>
     </div>
