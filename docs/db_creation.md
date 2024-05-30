@@ -5,7 +5,7 @@ login. Il login/registrazione richiede un campo univoco che sarà utilizzato per
 nel sito (per esempio, la mail)
 
 ```sql
-CREATE TABLE IF NOT EXISTS "utenti" (
+CREATE TABLE IF NOT EXISTS "users" (
     "id" INTEGER NOT NULL,
     "email" TEXT NOT NULL UNIQUE,
     "user_type" TEXT NON NULL,
@@ -44,3 +44,17 @@ CREATE TABLE IF NOT EXISTS "photos" (
 	PRIMARY KEY("id")
 );
 ```
+
+```sql
+CREATE TABLE IF NOT EXISTS "bookings" (
+    "id" INTEGER NOT NULL,
+    "advert_id" INTEGER NOT NULL,
+    "user_id" INTEGER NOT NULL,
+    "status" TEXT NOT NULL CHECK(status IN ('request', 'accepted', 'refused')),
+    "refusal_reason" TEXT,
+    FOREIGN KEY("advert_id") REFERENCES "adverts"("id"),
+    FOREIGN KEY("user_id") REFERENCES "users"("id"),
+    PRIMARY KEY("id")
+);
+```
+

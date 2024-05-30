@@ -4,7 +4,7 @@ def create_table_users():
     conn = sqlite3.connect('data.db')
     cursor = conn.cursor()
     cursor.execute('''
-        CREATE TABLE IF NOT EXISTS "utenti" (
+        CREATE TABLE IF NOT EXISTS "users" (
             "id" INTEGER NOT NULL,
             "email" TEXT NOT NULL UNIQUE,
             "user_type" TEXT NON NULL,
@@ -47,6 +47,25 @@ def create_table_photos():
 	        FOREIGN KEY("advert_id") REFERENCES "annunci"("id"),
 	        PRIMARY KEY("id")
         );
+    ''')
+    conn.commit()
+    conn.close()
+
+
+def create_table_bookings():
+    conn = sqlite3.connect('data.db')
+    cursor = conn.cursor()
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS "bookings" (
+        "id" INTEGER NOT NULL,
+        "advert_id" INTEGER NOT NULL,
+        "user_id" INTEGER NOT NULL,
+        "status" TEXT NOT NULL CHECK(status IN ('request', 'accepted', 'refused')),
+        "refusal_reason" TEXT,
+        FOREIGN KEY("advert_id") REFERENCES "adverts"("id"),
+        FOREIGN KEY("user_id") REFERENCES "users"("id"),
+        PRIMARY KEY("id")
+    );
     ''')
     conn.commit()
     conn.close()

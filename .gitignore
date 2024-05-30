@@ -1,5 +1,5 @@
 .env
 *.pdf
 __pycache__
-datas.sqbpro
+data.sqbpro
 datas.db-journal

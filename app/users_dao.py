@@ -6,7 +6,7 @@ def add_user(user):
     cursor = conn.cursor()
 
     success = False
-    sql = 'INSERT INTO utenti(email, user_type, password) VALUES(?,?,?)'
+    sql = 'INSERT INTO users(email, user_type, password) VALUES(?,?,?)'
 
     try:
         cursor.execute(
@@ -26,7 +26,7 @@ def get_user_by_id(id):
     conn.row_factory = sqlite3.Row
     cursor = conn.cursor()
 
-    sql = 'SELECT * FROM utenti WHERE id = ?'
+    sql = 'SELECT * FROM users WHERE id = ?'
     cursor.execute(sql, (id,))
     user = cursor.fetchone()
 
@@ -40,7 +40,7 @@ def get_user_by_email(email):
     conn.row_factory = sqlite3.Row
     cursor = conn.cursor()
 
-    sql = 'SELECT * FROM utenti WHERE email = ?'
+    sql = 'SELECT * FROM users WHERE email = ?'
     cursor.execute(sql, (email,))
     user = cursor.fetchone()
 
@@ -55,7 +55,7 @@ def get_users():
     cursor = conn.cursor()
 
     # SQL query to select all records from the "utenti" table excluding the password and the email
-    sql = 'SELECT id, email FROM utenti'
+    sql = 'SELECT id, email FROM users'
     cursor.execute(sql)
     users = cursor.fetchall()
 

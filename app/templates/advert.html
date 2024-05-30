@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+<!--The placeholder {{ title }} then gets replaced by the title from render_template in the definition of the route-->
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+        <main class="container mt-3 mb-3">
+            <div class="row mb-4 align-items-center">
+                <div class="col">
+                    <h3>{{ usr.email }}</h3>
+                    <time class="text-muted">{{ .date }}</time>
+                </div>
+            </div>
+
+            <div class="row justify-content-center g-4">
+                <div class="col-lg-6 order-lg-2">
+                    <img src="{{ url_for('static', filename=) }}" class="img-fluid rounded mb-3" alt="Post Image">
+                </div>
+
+                <div class="col-lg-6 order-lg-1">
+                    <article class="card">
+                        <div class="card-body">
+                            {{ advert.description }}
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </main>
+
+{% endblock %}

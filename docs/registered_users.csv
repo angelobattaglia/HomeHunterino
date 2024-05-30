@@ -1,0 +1,6 @@
+id, email, password, role
+1, a@t.com, lol12345, Tenant
+2, b@t.com, lol12345, landlord
+3, c@t.com, lol12345, Tenant
+4, d@t.com, lol12345, landlord
+5, e@t.com, lol12345, Tenant

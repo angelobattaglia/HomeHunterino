@@ -30,6 +30,8 @@
         <nav class="row">
             <div class="col">
                 <ul class="nav justify-content-center">
+
+                    <!-- Nested if statements in Jinja -->
                     {% if current_user.is_authenticated %}
                         <li class="nav-item">
                             <span class="nav-link disabled">Logged in as {{ current_user.email }}</span>
@@ -77,8 +79,136 @@
         </nav>
     </header>
 
-{% block content %}{% endblock %}
+<!-- The Following is a form that targets the landlord user type -->
+{% if current_user.user_type == 'landlord' %}
+<button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#button-trigger" style="position: fixed; bottom: 20px; right: 20px; width: 60px; height: 60px; border-radius: 50%; background-color: #007AFF; border: 2px solid #C0C0C0; color: #FFFFFF; font-size: 18px; display: flex; align-items: center; justify-content: center; padding-top: 2px">+</button>
 
+<div class="modal" tabindex="-1" id="button-trigger">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <form action="/new_advert" method="POST" enctype="multipart/form-data">
+
+                <!-- The header of the form  -->
+                <div class="modal-header">
+                        <h5 class="modal-title">Rent-a-House</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <!-- The body of the form  -->
+                <div class="modal-body">
+                    <div class="mb-3">
+
+                        <!-- Adding a name to the collection -->
+                        <!--name:title_advert-->
+                        <div class="mb-3">
+                            <label for="postContent" class="form-label">Rent one of your properties!</label>
+                            <!-- the name="text" is the one that bonds it --> 
+                            <textarea class="form-control" id="postContent" name="title_advert" required minlength="5" maxlength="30" placeholder="Insert the title of the advert here!"></textarea>
+                        </div>
+
+                        <!-- Address -->
+                        <!--name:address-->
+                        <div class="mb-3">
+                            <label for="postContent" class="form-label">Post the address of the property</label>
+                            <!-- the name="text" is the one that bonds it --> 
+                            <textarea class="form-control" id="postContent" name="address" required minlength="5" maxlength="88" placeholder="Insert here the address of the property"></textarea>
+                        </div>
+
+                        <!-- Dropdown menu that allows the selection of one of the types of property -->
+                        <!--name:property_type-->
+                        <div class="mb-3">
+                            <label for="propertyType" class="form-label">The type of property is</label>
+                            <select class="form-select" id="propertyType" name="property_type">
+                                <option value="Independent House">Independent House</option>
+                                <option value="Flat">Flat</option>
+                                <option value="Loft">Loft</option>
+                                <option value="Villa">Villa</option>
+                            </select>
+                        </div>
+
+                        <!-- Number of rooms -->
+                        <!--name:rooms-->
+                        <div class="mb-3">
+                            <label for="donationTarget" class="form-label">Number of rooms</label>
+                            <input type="number" class="form-control" id="roomsNumber" name="rooms" min="0" max="5" required placeholder="Insert here the number of rooms of your house">
+                        </div>
+
+                        <!-- Asking price per month -->
+                        <!--name:price-->
+                        <div class="mb-3">
+                            <label for="donationTarget" class="form-label">Monthly fee (in $)</label>
+                            <input type="number" class="form-control" id="askingPrice" name="price" min="100" max="500" required placeholder="Insert here the price you want to charge the tenants monthly">
+                        </div>
+
+                        <!-- Description -->
+                        <!--name:description-->
+                        <div class="mb-3">
+                            <label for="postContent" class="form-label">Post a description of the property</label>
+                            <!-- the name="text" is the one that bonds it --> 
+                            <textarea class="form-control" id="postContent" name="description" required minlength="30" maxlength="200" placeholder="Insert here a description of the property!"></textarea>
+                        </div>
+
+                        <!-- Adding an image (or more than one image) area -->
+                        <!--name:images[]-->
+                        <div class="mb-3">
+                            <label for="postImage" class="form-label">Add the first image</label>
+                            <div class="input-group">
+                                <input type="file" class="form-control" id="postImage" name="image1" multiple aria-label="Upload">
+                            </div>
+                            <label for="postImage" class="form-label">Add the second image</label>
+                            <div class="input-group">
+                                <input type="file" class="form-control" id="postImage" name="image2" multiple aria-label="Upload">
+                            </div>
+                            <label for="postImage" class="form-label">Add the third image</label>
+                            <div class="input-group">
+                                <input type="file" class="form-control" id="postImage" name="image3" multiple aria-label="Upload">
+                            </div>
+                            <label for="postImage" class="form-label">Add a fourth image</label>
+                            <div class="input-group">
+                                <input type="file" class="form-control" id="postImage" name="image4" multiple aria-label="Upload">
+                            </div>
+                            <label for="postImage" class="form-label">Add a fifth image</label>
+                            <div class="input-group">
+                                <input type="file" class="form-control" id="postImage" name="image5" multiple aria-label="Upload">
+                            </div>
+                        </div>
+
+                        <!-- Using Radio check controls -->
+                        <!-- Furnished -->
+                        <!--name:furnished-->
+                        <div class="mb-3">
+                            <label for="furnishedStatus" class="form-label">Is it already furnished?</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="furnished" id="furnishedYes" value="yes">
+                                <label class="form-check-label" for="furnishedYes">Yes, it is furnished</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="furnished" id="furnishedNo" value="no">
+                                <label class="form-check-label" for="furnishedNo">No, it's not furnished</label>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- The footer of the form  -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <!-- It's important to note how the type="button" has been changed to type="submit"-->
+                    <button type="submit" class="btn btn-primary">Post</button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+{% endif %}
+<!-- END OF THE IF STATEMENT  -->
+
+
+{% block content %}{% endblock %}
 
 
     <!-- Adding javascript for animations and components that are not made with CSS  -->
