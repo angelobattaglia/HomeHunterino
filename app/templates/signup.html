@@ -20,7 +20,13 @@
             </div>
             <div class="mb-3">
                 <label for="user_typeInput" class="form-label">User Type</label>
-                <input type="text" class="form-control" required minlength="5" maxlength="30" name="user_type" id="nicknameInput">
+                <select class="form-select" required name="user_type" id="user_typeInput">
+                    <option value="" disabled selected>Select user type</option>
+                    <option value="landlord">Landlord</option>
+                    <option value="tenant">Tenant</option>
+                </select>
+                <!--Alternatively-->
+                <!--<input type="text" class="form-control" required minlength="5" maxlength="30" name="user_type" id="nicknameInput">-->
                 <div id="passwordHelp" class="form-text">Say if you want to register as a landlord or a tenant</div>
             </div>
             <div class="mb-3">
