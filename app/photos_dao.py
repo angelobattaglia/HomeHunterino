@@ -1,41 +1,6 @@
 import sqlite3
 
-def get_adverts():
-    conn = sqlite3.connect('datas.db')
-    conn.row_factory = sqlite3.Row
-    cursor = conn.cursor()
-
-    # TODO
-    sql = ''
-    cursor.execute(sql)
-    adverts = cursor.fetchall()
-
-    cursor.close()
-    conn.close()
-
-    return adverts
-
-def get_advert(id):
-    conn = sqlite3.connect('datas.db')
-    conn.row_factory = sqlite3.Row
-    cursor = conn.cursor()
-
-    # TODO
-    sql = ''
-    cursor.execute(sql, (id,))
-    advert = cursor.fetchone()
-
-    cursor.close()
-    conn.close()
-
-    return advert
-
-# ------------------------------------------------
-# ------------------------------------------------
-# ------------------------------------------------
-# Retrieving all the posts
-# input: post, which is expected to be a dictionary containing the data for the new post.
-def add_advert(advert):
+def add_photos(advert):
     # Connect to the SQLite database
     con = sqlite3.connect('datas.db')
     # The following line configures the connection to return rows as dictionary-like objects. 

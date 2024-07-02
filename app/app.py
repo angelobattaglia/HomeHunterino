@@ -69,7 +69,7 @@ def page_not_found(e):
 def advert(advert_id):
     adverts = []
     adverts = adverts_dao.get_all_adverts()
-    
+
     advert = adverts[advert_id-1]
 
     if advert_id < 1 or advert_id > len(adverts):
@@ -102,6 +102,7 @@ def new_advert():
 
     # I take from new_advert the images, by checking first if said image exists
     post_images = []
+    new_advert['images'] = [] # the field 'images' of the dictionary new_advert is a list
     if new_advert['image1']:
         post_images.append(new_advert['image1'])
     if new_advert['image2']:
@@ -118,8 +119,8 @@ def new_advert():
     # new_advert_form['address']
     # new_advert_form['property_type']
     # new_advert_form['rooms'] # int type, from 1 to 5, the number of rooms
-    # new_advert_form['price'] # int type, asking price for the room, from 100 to 500
     # new_advert_form['description']
+    # new_advert_form['price'] # int type, asking price for the room, from 100 to 500
     # new_advert_form['furnished'] # two values: 'yes' or 'no'
     
     ## I can make checks on these values passed from the base.html form
@@ -132,10 +133,10 @@ def new_advert():
     # if datetime.datetime.strptime(new_advert['date'], '%Y-%m-%d').date() < datetime.date.today():
         # app.logger.error('Data errata')
         # return redirect(url_for('home'))
-    
-    
+
     # Handling the images inserted by the 'landlord' user
     # post_image = request.files['images[]'] # not a really smart move in my book
+    # TODO: optimizing the for-if annidation
     for image in post_images:
         if image:
             # Open the user-provided image using the Image module
@@ -161,7 +162,8 @@ def new_advert():
 
             # TODO: to fix the following two lines in its context
             # Updating the 'immagine_post' field in the post dictionary with the image filename
-            new_advert['images'] = '@' + flask_login.current_user.nickname.lower() + '-' + str(seconds) + '.' + ext
+            # new_advert['i']
+            new_advert['images'].append('@' + flask_login.current_user.nickname.lower() + '-' + str(seconds) + '.' + ext)
 
     # After finishing making the checks, I put the "post" dictionary in the database
     success = adverts_dao.add_advert(new_advert)

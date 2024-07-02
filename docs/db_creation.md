@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS "adverts" (
 	"rooms"	INTEGER NOT NULL,
 	"description"	TEXT NOT NULL,
 	"price"	INTEGER NOT NULL,
-	"furnished"	INTEGER NOT NULL,
+	"furnished"	TEXT NOT NULL,
 	"id_landlord"	INTEGER NOT NULL,
 	"publicly_available"	INTEGER NOT NULL,
 	PRIMARY KEY("id")
