@@ -6,7 +6,7 @@
 <div class="container mt-5"> <!-- Adds a top margin and centers content -->
 
     <div class="d-flex justify-content-start mb-4"> <!-- Ensures button is aligned to the start and adds bottom margin -->
-        <a href="/" class="btn btn-primary">Torna indietro</a>
+        <a href="/" class="btn btn-primary">Go Back</a>
     </div>
 
     <div class="col-4 offset-md-4 bg-light p-4 border rounded">
@@ -19,7 +19,7 @@
                 <div id="passwordHelp" class="form-text">We'll never share your email with third parties</div>
             </div>
             <div class="mb-3">
-                <label for="user_typeInput" class="form-label">User Type</label>
+                <label for="user_typeInput" class="form-label">Signing up as</label>
                 <select class="form-select" required name="user_type" id="user_typeInput">
                     <option value="" disabled selected>Select user type</option>
                     <option value="landlord">Landlord</option>
@@ -34,7 +34,8 @@
                 <input type="password" class="form-control" name="password" id="passwordInput" required minlength="8" maxlength="30">
                 <div id="passwordHelp" class="form-text" >Your password is safe with us</div>
             </div>
-            <button type="submit" class="btn btn-primary">Registrati</button>
+            <button type="submit" class="btn btn-primary">Sign up</button>
+            <small>Have one already? <a href="/login">Login</a></small>
         </form>
     </div>
 
